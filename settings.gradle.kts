@@ -22,5 +22,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "State Comparison"
+rootProject.name = "StateComparison"
 include(":app")

@@ -11,16 +11,17 @@ android {
 
     defaultConfig {
         applicationId = "com.scaredeer.statecomparison"
-        minSdk = 23
+        minSdk = 24
         targetSdk = 37
         versionCode = 1
-        versionName = "20260924"
+        versionName = "20261004"
     }
 
     buildTypes {
         release {
             optimization {
                 enable = true // Enables code and resource optimizations.
+                packageScope = setOf("androidx.**", "kotlin.**", "kotlinx.**")
             }
         }
     }
@@ -42,4 +43,6 @@ dependencies {
     implementation(libs.androidx.compose.ui.tooling.preview)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
+    debugImplementation(libs.androidx.compose.ui.test.manifest)
+    debugImplementation(libs.androidx.compose.ui.tooling)
 }

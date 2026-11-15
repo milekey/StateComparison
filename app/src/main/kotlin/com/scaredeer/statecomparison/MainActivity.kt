@@ -32,20 +32,16 @@ class MainActivity : ComponentActivity() {
             AppTheme {
                 Scaffold(modifier = Modifier.imePadding()) { innerPadding ->
                     Column(
-                        modifier = Modifier.padding(innerPadding).fillMaxSize(),
+                        modifier = Modifier
+                            .padding(innerPadding)
+                            .fillMaxSize(),
                         horizontalAlignment = Alignment.CenterHorizontally,
                         verticalArrangement = Arrangement.SpaceEvenly
                     ) {
-                        HelloStateful(
-                            modifier = Modifier
-                        )
+                        HelloStateful()
 
-                        var valueOfCaller by rememberSaveable { mutableStateOf("") }
-                        HelloStateless(
-                            name = valueOfCaller,
-                            onNameChange = { valueOfCaller = it },
-                            modifier = Modifier
-                        )
+                        var name by rememberSaveable { mutableStateOf("") }
+                        HelloStateless(name) { name = it }
                     }
                 }
             }
@@ -73,7 +69,7 @@ fun HelloStateful(modifier: Modifier = Modifier) {
 }
 
 @Composable
-fun HelloStateless(name: String, onNameChange: (String) -> Unit, modifier: Modifier = Modifier) {
+fun HelloStateless(name: String, modifier: Modifier = Modifier, onNameChange: (String) -> Unit) {
     Column(modifier = modifier) {
         OutlinedTextField(
             value = name,
